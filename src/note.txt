@@ -1,0 +1,39 @@
+
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+i
+import { Box, Switch, Typography } from "@mui/material";
+import CardMui from "./CardMui";
+import { useState } from "react";
+
+const th1 = createTheme({
+  palette: {
+    mode: "light",
+    primary: {
+      main: '#4a148c'
+    } 
+  },
+});
+
+const th2 = createTheme({
+  palette: {
+    mode: "dark",
+    primary: {
+      main: "#cddc39",
+    },
+  },
+});
+
+const Home = () => {
+  const [hi, setHi] = useState(true);
+  return (
+    <ThemeProvider theme={hi ? th1 : th2}>
+      <Box>
+        <CardMui></CardMui>
+        <Typography color={"primary.main"}>Three is more themes</Typography>
+        <Switch onClick={() => setHi(!hi)} color="secondary" />
+      </Box>
+    </ThemeProvider>
+  );
+};
+
+export default Home;
